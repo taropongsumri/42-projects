@@ -90,13 +90,12 @@ ulimit -n 1024
 ```c
 #ifndef GET_NEXT_LINE_H
     # define GET_NEXT_LINE_H
-    # include <stdio.h>
-    # include <stdlib.h>
-    # include <unistd.h>
-    # ifndef BUFFER_SIZE
+    # include <stdio.h>  // for malloc free
+    # include <stdlib.h> // for what ? i forgot claude do something here 
+    # include <unistd.h> // for size_t ssize_t
+    # ifndef BUFFER_SIZE // Because In Subject Page 8 We can complie without the -D and when we dont have this condition and we dont check if its already have BUFFER_SIZE its gonna replace with default buffer_size
         # define BUFFER_SIZE 42
     # endif
-    # define MAX_FD 1024
 
     typedef struct s_gnl_list
     {

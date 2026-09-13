@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 21:05:46 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/09/12 21:06:18 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/09/13 11:56:00 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static t_gnl_list	*get_node(t_gnl_list **head, int fd)
 {
@@ -102,8 +102,12 @@ static char	*build_line(t_gnl_list **head, t_gnl_list *node, int fd)
 	if (pos != -1 && ft_strlen(node->buf) - len > 0)
 	{
 		rem = malloc(ft_strlen(node->buf) - len + 1);
-		if (rem != NULL)
-			ft_strlcpy(rem, node->buf + len, ft_strlen(node->buf) - len + 1);
+		if (rem == NULL)
+		{
+			free(line);
+			return (NULL);
+		}
+		ft_strlcpy(rem, node->buf + len, ft_strlen(node->buf) - len + 1);
 		free(node->buf);
 		node->buf = rem;
 	}
@@ -123,7 +127,10 @@ char	*get_next_line(int fd)
 	if (node == NULL)
 		return (NULL);
 	if (fill_buffer(node, fd) == -1)
+	{
+		free_node(&head, fd);
 		return (NULL);
+	}
 	if (node->buf == NULL)
 	{
 		free_node(&head, fd);

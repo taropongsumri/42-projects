@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 21:05:42 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/09/12 21:06:13 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/09/13 11:53:49 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(char *s)
 {
@@ -34,7 +34,7 @@ void	ft_memcpy(char *dst, char *src, size_t n)
 	}
 }
 
-void	ft_strlcpy(char *dst, char *src, int n)
+void	ft_strlcpy(char *dst, char *src, size_t n)
 {
 	int	i;
 
