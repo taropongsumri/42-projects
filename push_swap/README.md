@@ -38,6 +38,7 @@
 - [Visulization 1](https://vscza.itch.io/push-swap)
 - [Visulization 2](https://www.youtube.com/watch?v=4dMsuxfqufg)
 - [Tester](https://github.com/LeoFu9487/push_swap_tester)
+- [Tester](https://github.com/nirmal-gope/push_swap_tester)
 - [Big O](https://medium.com/@princemeghani/big-o-notation-a-simple-explanation-with-examples-1ef0356825a7)
 - [Stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
 - [Circula Double Linked list](https://www.geeksforgeeks.org/dsa/introduction-to-circular-doubly-linked-list/)
