@@ -65,3 +65,8 @@
     }	t_stack;
 ```
 <!-- Because Circula Doesn't know what is the first node -->
+
+## Operations
+<!-- In this file i avoid to use malloc  -->
+<!-- because create everytime , failed , free , leak risk -->
+<!-- We just need to fix pointer thats point to value -->

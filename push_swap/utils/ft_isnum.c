@@ -17,6 +17,10 @@ int	ft_isnum(char *num)
 	int	i;
 
 	i = 0;
+	if (num[i] == '-' || num[i] == '+')
+		i++;
+	if (num[i] == '\0')
+		return (0);
 	while (num[i])
 	{
 		if (!ft_isdigit(num[i]))
