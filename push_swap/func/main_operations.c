@@ -30,3 +30,45 @@ int push(t_ps_node **get, t_ps_node **push){
 
     return (1);
 }
+
+int rotate(t_ps_node **stack){
+    t_ps_node *first;
+    t_ps_node *sec;
+
+    if (!stack || !*stack || !(*stack)->next)
+        return (0);
+
+    first = *stack;
+    sec = *stack;
+
+    while (sec->next != NULL)
+        sec = sec->next;
+
+    *stack = first->next;
+    sec->next = first;
+
+    return (1);
+}
+
+int reverse_rotate(t_ps_node **stack){
+    t_ps_node *first;
+    t_ps_node *sec;
+    t_ps_node *third;
+
+    if (!stack || !*stack || !(*stack)->next)
+        return (0);
+
+    first = (*stack);
+    sec = *stack;
+    third = *stack;
+    
+    while (sec->next != NULL){
+        third = sec;    
+        sec = sec->next;
+    }
+
+    (*stack) = sec;
+    (*stack)->next = first;
+    third->next = NULL;
+    return (1);
+}
