@@ -1,6 +1,7 @@
 *This project has been created as part of the 42 curriculum by ponsumri*
 
 # Move Function
+## Operations name
 - sa / sb / ss
     - sa : Swap the top two numbers in a
     - sb : Swap the top two numbers in b
@@ -16,6 +17,8 @@
     - rra : Reverse rotate a (bottom becomes top)
     - rrb : Reverse rotate b (bottom becomes top)
     - rrr : rra and rrb at the same time
+## Operations Visualizations
+
 
 # Instructions
 
@@ -95,26 +98,10 @@
 	// 	c = c->next;
 	// }
 
-
-## To Check the Operations
-<!-- The 11 wrappers (sa..rrr) are the only legal output of the      -->
-<!-- program, and they PRINT. Testing swap()/rotate()/push() direct  -->
-<!-- does not cover them, so a wrong token (ra where rra belongs) or -->
-<!-- a swapped pa/pb would pass every stack test and then corrupt    -->
-<!-- every operation list.                                           -->
-<!--                                                                 -->
-<!-- Capture fd 1 per call and assert the exact bytes:               -->
-<!--   saved = dup(1); fd = open(tmp, ...); dup2(fd, 1);             -->
-<!--   sa(&a);                                                        -->
-<!--   dup2(saved, 1); read(tmp) -> compare to "sa\n"                -->
-<!--                                                                 -->
-<!-- Checked: all 11 tokens exact + resulting order; every no-op     -->
-<!-- case prints nothing (empty stack, 1 node, pa with b empty);     -->
-<!-- rra prints rra not ra; pa prints pa not pb.                     -->
+# To Check Operations (Claude fill & delete this)
 
 
 # Steps
-
 1. ~~**Stack helpers**~~ **DONE** — `utils/ft_stack_utils.c`: `ft_stack_size`, `ft_is_sorted`, `ft_find_min`, `ft_find_max`, `ft_get_pos`.
    Read-only: they never mutate a stack and never print an operation. That is why they live in `utils/` and not `func/` — everything in `func/` emits output.
    Named `ft_get_pos`, **not** `ft_get_index`: position-from-top and the `index` field are two different numbers, and naming them alike invites bugs.

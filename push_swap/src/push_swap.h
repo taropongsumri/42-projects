@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ponsumri <ponsumri@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 19:30:05 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/09/17 19:30:05 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/10/15 13:08:06 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ typedef struct s_ps_node
 }	t_ps_node;
 
 /*
-** Whole program state. Globals are forbidden, so this is passed to every
+** Program state. Globals are forbidden, so this is passed to every
 ** operation: it owns both stacks and the per-operation counters.
+** Its Counters !!!! bro
 */
 typedef struct s_ps
 {
