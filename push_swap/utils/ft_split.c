@@ -12,7 +12,7 @@
 
 #include "../src/push_swap.h"
 
-int	word_count(char const *s, char c)
+static int	word_count(char const *s, char c)
 {
 	int	i;
 	int	count;
@@ -28,7 +28,7 @@ int	word_count(char const *s, char c)
 	return (count);
 }
 
-int	word_length(char const *s, char c)
+static int	word_length(char const *s, char c)
 {
 	int	i;
 	int	len;
@@ -43,7 +43,15 @@ int	word_length(char const *s, char c)
 	return (len);
 }
 
-char	**f(char const *s, char c, char **result, int words_count)
+static char	**ft_free_partial(char **result, int n)
+{
+	while (n-- > 0)
+		free(result[n]);
+	free(result);
+	return (NULL);
+}
+
+static char	**f(char const *s, char c, char **result, int words_count)
 {
 	int	i;
 	int	j;
@@ -60,7 +68,7 @@ char	**f(char const *s, char c, char **result, int words_count)
 		w_len = word_length(s, c);
 		result[i] = (char *)malloc(sizeof(char) * (w_len + 1));
 		if (!(result[i]))
-			return (NULL);
+			return (ft_free_partial(result, i));
 		while (j < w_len)
 		{
 			result[i][j] = *s;
@@ -75,6 +83,7 @@ char	**f(char const *s, char c, char **result, int words_count)
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
+	char	**filled;
 	int		wcount;
 
 	if (!s)
@@ -83,7 +92,9 @@ char	**ft_split(char const *s, char c)
 	result = (char **)malloc(sizeof(char *) * (wcount + 1));
 	if (!(result))
 		return (NULL);
-	result = f(s, c, result, wcount);
-	result[wcount] = NULL;
-	return (result);
+	filled = f(s, c, result, wcount);
+	if (!filled)
+		return (NULL);
+	filled[wcount] = NULL;
+	return (filled);
 }

@@ -1,21 +1,33 @@
-#include "../src/push_swap.h"
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/17 19:30:05 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/10/14 17:43:50 by ponsumri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int main(int argc, char **argv){
+#include "push_swap.h"
 
-    t_stack **stack_a;
-    t_stack **stack_b;
+int	main(int argc, char **argv)
+{
+	t_ps_node	*stack_a;
+	t_ps_node	*stack_b;
 
-
-    if (argc < 2)
-        return 0;
-
-    ft_clear_args(argc, argv);
-    stack_a = (t_stack **)malloc(sizeof(t_stack));
-    stack_b = (t_stack **)malloc(sizeof(t_stack));
-
-    *stack_a = NULL;
-    *stack_b = NULL;
-
-    return (0);
+	if (argc < 2)
+		return (0);
+	stack_a = ft_parse_args(argc, argv);
+	stack_b = NULL;
+	if (ft_is_sorted(stack_a))
+	{
+		ft_free_stack(&stack_a);
+		return (0);
+	}
+	ft_index_stack(stack_a);
+	ft_free_stack(&stack_a);
+	ft_free_stack(&stack_b);
+	return (0);
 }

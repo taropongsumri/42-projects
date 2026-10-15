@@ -12,11 +12,11 @@
 
 #include "../src/push_swap.h"
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	neg;
-	int	j;
+	int		i;
+	int		neg;
+	long	j;
 
 	i = 0;
 	neg = 1;
@@ -31,6 +31,8 @@ int	ft_atoi(const char *nptr)
 	}
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
+		if (j > (LONG_MAX - (nptr[i] - '0')) / 10)
+			return (neg * LONG_MAX);
 		j = j * 10 + (nptr[i] - '0');
 		i++;
 	}

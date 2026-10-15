@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_collect.c                                       :+:      :+:    :+:   */
+/*   ft_putx_print.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ponsumri <ponsumri@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/17 19:30:08 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/09/17 19:30:08 by ponsumri         ###   ########.fr       */
+/*   Created: 2026/09/04 01:06:08 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/09/04 11:09:42 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/push_swap.h"
+#include "ft_printf.h"
 
-int	ft_collect(int num, char **argv, int i)
+void	ft_puthex_print(unsigned long n, int *total, char *base)
 {
-	i++;
-	while (argv[i])
-	{
-		if (ft_atoi(argv[i]) == num)
-			return (1);
-		i++;
-	}
-	return (0);
+	char	c;
+
+	if (n >= 16)
+		ft_puthex_print(n / 16, total, base);
+	c = base[n % 16];
+	ft_out(&c, 1, total);
 }

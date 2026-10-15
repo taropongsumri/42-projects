@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_print.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ponsumri <ponsumri@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/17 21:04:11 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/09/17 21:04:11 by ponsumri         ###   ########.fr       */
+/*   Created: 2026/08/29 12:00:29 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/09/04 01:05:42 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/push_swap.h"
+#include "ft_printf.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_putchar_print(char c, int *total)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	ft_out(&c, 1, total);
 }

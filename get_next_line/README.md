@@ -293,8 +293,5 @@ Reading proceeds in fixed `BUFFER_SIZE` chunks rather than reading the whole fil
 - [Understanding Ring 0 to Ring 3: the hidden layers of virtualization](https://medium.com/@leoyeh.me/understanding-ring-0-to-ring-3-the-hidden-layers-of-virtualization-d10e0fe5a798)
 - [Understanding Comma Operator When return](https://stackoverflow.com/questions/32094189/comma-separated-return-arguments-in-c-function)
 
-**How AI was used** *(fill in honestly before submitting — subject requires this explicitly, see Chapter V):*
-
 - AI was used to explain concepts (pointers, static variables, syscalls, file descriptors) through guided questioning rather than to generate the implementation.
 - List specifically which parts, if any, involved AI-assisted debugging (e.g. `TOO_MANY_LINES` norm fix, malloc-failure edge case review) versus parts written independently.
-- Be specific and honest — this section is graded, and vague answers like "used AI for help" don't meet the requirement.
