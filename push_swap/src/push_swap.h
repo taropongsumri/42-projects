@@ -6,7 +6,7 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 19:30:05 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/10/15 13:08:06 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/10/15 22:37:48 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,31 @@
 # include "ft_printf.h"
 
 /* Strategy ids: what the user asked for (strategy) / what ran (regime) */
-# define S_NONE		-1
-# define S_SIMPLE	0
-# define S_MEDIUM	1
-# define S_COMPLEX	2
-# define S_ADAPTIVE	3
+typedef enum e_strategy
+{
+	S_NONE = -1,
+	S_SIMPLE,
+	S_MEDIUM,
+	S_COMPLEX,
+	S_ADAPTIVE
+}	t_strategy;
 
 /* Operation ids, used as indexes into t_ps.ops for --bench */
-# define OP_SA		0
-# define OP_SB		1
-# define OP_SS		2
-# define OP_PA		3
-# define OP_PB		4
-# define OP_RA		5
-# define OP_RB		6
-# define OP_RR		7
-# define OP_RRA		8
-# define OP_RRB		9
-# define OP_RRR		10
-# define OP_COUNT	11
+typedef enum e_ops
+{
+	OP_SA,
+	OP_SB,
+	OP_SS,
+	OP_PA,
+	OP_PB,
+	OP_RA,
+	OP_RB,
+	OP_RR,
+	OP_RRA,
+	OP_RRB,
+	OP_RRR,
+	OP_COUNT
+}	t_ops;
 
 typedef struct s_ps_node
 {

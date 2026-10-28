@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_stack_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ponsumri <ponsumri@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 19:30:05 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/09/17 19:30:05 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/10/28 19:16:35 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
