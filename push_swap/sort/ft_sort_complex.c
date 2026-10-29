@@ -30,28 +30,38 @@ static int	ft_max_bits(int n)
 	return (bits);
 }
 
+/* One pass: bit 0 -> b, bit 1 -> stays in a (ra), then bring b back */
+
+static void	ft_radix_pass(t_ps *ps, int n, int bit)
+{
+	int	j;
+
+	j = 0;
+	while (j++ < n)
+	{
+		if ((ps->a->index >> bit) & 1)
+			ra(ps);
+		else
+			pb(ps);
+	}
+	while (ps->b)
+		pa(ps);
+}
+
 void	ft_sort_complex(t_ps *ps)
 {
 	int	n;
 	int	bits;
 	int	bit;
-	int	j;
 
 	n = ft_stack_size(ps->a);
+	if (n <= 3)
+	{
+		ft_sort_three(ps);
+		return ;
+	}
 	bits = ft_max_bits(n);
 	bit = 0;
 	while (bit < bits && !ft_is_sorted(ps->a))
-	{
-		j = 0;
-		while (j++ < n)
-		{
-			if ((ps->a->index >> bit) & 1)
-				ra(ps);
-			else
-				pb(ps);
-		}
-		while (ps->b)
-			pa(ps);
-		bit++;
-	}
+		ft_radix_pass(ps, n, bit++);
 }

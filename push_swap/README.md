@@ -33,11 +33,95 @@
 
 # 4 Sorting Algorithm
 - Simple (Insertion Sort)
-    -
+    - ft_sort_three (for handle case stack_size <= 3)
+        Is it sorted ? then just return.
+            Is it size == 2? then just switch.
+                Then find max and then Put the biggest at the bottom.
+                    Then fix the top two by swap them.
+
+    - ft_find_min(ps->a)        → "which box is the smallest?" 
+    - ft_get_pos(ps->a, box)    → "how far is it from the top?"
+    - ft_rotate_a_to(ps, 3)     → "turn a until position 3 is on top, the shorter way" , this function also do ra and we use to make the min postion to the first number in stack then push to b
+
+    - ft_sort_small (selection sort, used by adaptive when n ≤ 5)
+        - While stack a has more than 3 numbers and is not sorted:
+            - find the smallest number in a
+            - find its position (how far from the top)
+            - rotate a until it is on top (ra if it is in the top half, rra if in the bottom half)
+            - pb: push it to b
+        - ft_sort_three: sort the 3 numbers left in a (at most 2 ops)
+        - pa until b is empty: b only holds the smallest numbers, with the
+        second smallest on top, so pushing them back keeps a sorted (bc we need stack b to be empty)
+        - At most 12 operations for 5 numbers
+
+
+    - readable version
+    ```
+    c
+    void	ft_sort_small(t_ps *ps)
+    {
+        t_ps_node	*min;
+        int			pos;
+
+        while (ft_stack_size(ps->a) > 3 && !ft_is_sorted(ps->a))
+        {
+            min = ft_find_min(ps->a);
+            pos = ft_get_pos(ps->a, min);
+            ft_rotate_a_to(ps, pos);
+            pb(ps);
+        }
+        ft_sort_three(ps);
+        while (ps->b)
+            pa(ps);
+    }
+    ```
+
+
 - Medium (Chunk Sort) 
-    -
+    - ft_sort_three (for handle case stack_size <= 3)
+        Is it sorted ? then just return.
+            Is it size == 2? then just switch.
+                Then find max and then Put the biggest at the bottom.
+                    Then fix the top two by swap them.
+    
+    - ft_sqrt ()
+        try to find the close sqrt by r+1 * r+1 until close to n 
+    ``` in case not fit
+        r = 0:  1  ≤ 74?  yes → r = 1
+        r = 1:  4  ≤ 74?  yes → r = 2
+        r = 2:  9  ≤ 74?  yes → r = 3
+        r = 3:  16 ≤ 74?  yes → r = 4
+        r = 4:  25 ≤ 74?  yes → r = 5
+        r = 5:  36 ≤ 74?  yes → r = 6
+        r = 6:  49 ≤ 74?  yes → r = 7
+        r = 7:  64 ≤ 74?  yes → r = 8
+        r = 8:  81 ≤ 74?  NO  → stop
+        return 8
+    ```
+
+    - ft_push_chunks (roughly sorted)
+
+
+    - ft_sort_medium (real)
+        - we also use same algorithm here to sort 
+        ```c
+            while (ps->b)
+                {
+                    ft_rotate_b_to(ps, ft_get_pos(ps->b, ft_find_max(ps->b)));
+                    pa(ps);
+                }
+        ```
+
+
+    
 - Complex (LSD binary radix sort)
-    -
+    - ft_sort_three (for handle case stack_size <= 3)
+        Is it sorted ? then just return.
+            Is it size == 2? then just switch.
+                Then find max and then Put the biggest at the bottom.
+                    Then fix the top two by swap them.
+
+
 - Adaptive (Measure Disorder)
     - prediction by using disorder to look how messy input was
         input:  ./push_swap 50 20 60 10 40 30
