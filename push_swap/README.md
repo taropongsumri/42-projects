@@ -148,7 +148,7 @@ typedef struct s_ps_node
     ft_rotate_b_to(ps, ft_get_pos(ps->b, ft_find_max(ps->b)));  // max on top
     while (ps->b)
         pa(ps);                                                 // back to a sorted
-    ```AI
+    ```
 - Why O(n²) ? every number can need up to n/2 rotations in b → n * n/2
 - Why still good when almost sorted ? the slot is next to the top → almost 0 rotations
 
@@ -260,6 +260,8 @@ typedef struct s_ps_node
 - disorder = how many pairs are in the wrong order ÷ all pairs
     - 0 = already sorted, 1 = fully reversed
     - measured only once before sorting, cost 0 ops
+    - calculate by wrong_pair / total_pairs = float(result)
+    - total pairs = n × (n−1) / 2
 - choose
     ```
     n <= 5              → ft_sort_small
@@ -290,6 +292,142 @@ typedef struct s_ps_node
 | adaptive   | ≤ 1084      | ≤ 6784      |
 | pass       | < 2000      | < 12000     |
 | excellent  | < 700       | < 5500      |
+
+# Trace
+- one easy input for every algorithm, stack written top → bottom
+- all traces are the real output of our ./push_swap
+
+## ft_sort_three `2 3 1`
+- max 3 is in the middle → rra
+- top two 1 2 already ok → no sa
+    ```
+    op    a        b
+          2 3 1
+    rra   1 2 3          ✔ 1 op
+    ```
+
+## ft_sort_small `3 5 1 4 2` (adaptive, n ≤ 5)
+- push the min 2 times until 3 left, ft_sort_three, then pa back
+    ```
+    op    a            b
+          3 5 1 4 2
+    ra    5 1 4 2 3            min 1 at pos 2 (top half) → ra ra
+    ra    1 4 2 3 5
+    pb    4 2 3 5      1
+    ra    2 3 5 4      1       min 2 at pos 1 → ra
+    pb    3 5 4        2 1
+    rra   4 3 5        2 1     ft_sort_three: max 5 in the middle → rra
+    sa    3 4 5        2 1                    4 > 3 → sa
+    pa    2 3 4 5      1       pa back, smallest in b come last
+    pa    1 2 3 4 5            ✔ 9 ops
+    ```
+
+## Simple `3 1 4 2 5`
+- for each top of a: turn b so the slot is on top, then pb
+- slot = on top of the biggest number that is smaller than me (new min → on top of max)
+    ```
+    op    a            b
+          3 1 4 2 5
+    pb    1 4 2 5      3             b empty → just pb
+    pb    4 2 5        1 3           1 is new min → go on top of max 3 (already top)
+    rb    4 2 5        3 1           4 → slot on top of 3 (pos 1) → rb
+    pb    2 5          4 3 1
+    rrb   2 5          1 4 3         2 → slot on top of 1 (pos 2, bottom half) → rrb
+    pb    5            2 1 4 3
+    rb    5            1 4 3 2       5 → slot on top of 4 (pos 2) → rb rb
+    rb    5            4 3 2 1
+    pb                 5 4 3 2 1     max already on top → no rotate
+    pa    5            4 3 2 1       pa all back
+    pa    4 5          3 2 1
+    pa    3 4 5        2 1
+    pa    2 3 4 5      1
+    pa    1 2 3 4 5                  ✔ 14 ops
+    ```
+
+## Medium `5 2 7 0 6 1 4 3` (ranks = numbers, easy to read)
+- n = 8 → ft_sqrt(8) = 2 → range = 2 * 3 / 2 = 3
+- phase 1: `index <= i` → pb rb, `index <= i + 3` → pb, else → ra
+    ```
+    op    a                  b                  why
+          5 2 7 0 6 1 4 3                       i = 0
+    ra    2 7 0 6 1 4 3 5                       5 > 0+3 too big → wait
+    pb    7 0 6 1 4 3 5      2                  2 ≤ 0+3 in range        i = 1
+    ra    0 6 1 4 3 5 7      2                  7 > 1+3 too big
+    pb    6 1 4 3 5 7        0 2                0 ≤ 1 small → pb rb    i = 2
+    rb    6 1 4 3 5 7        2 0
+    ra    1 4 3 5 7 6        2 0                6 > 2+3 too big
+    pb    4 3 5 7 6          1 2 0              1 ≤ 2 small → pb rb    i = 3
+    rb    4 3 5 7 6          2 0 1
+    pb    3 5 7 6            4 2 0 1            4 ≤ 3+3 in range        i = 4
+    pb    5 7 6              3 4 2 0 1          3 ≤ 4 small → pb rb    i = 5
+    rb    5 7 6              4 2 0 1 3
+    pb    7 6                5 4 2 0 1 3        5 ≤ 5 small → pb rb    i = 6
+    rb    7 6                4 2 0 1 3 5
+    pb    6                  7 4 2 0 1 3 5      7 ≤ 6+3 in range        i = 7
+    pb                       6 7 4 2 0 1 3 5    6 ≤ 7 small → pb rb    i = 8
+    rb                       7 4 2 0 1 3 5 6
+    ```
+- b now = big at top and bottom (7 ... 5 6), small in the middle (0 1)
+- phase 2: find max of b, turn it to top the shorter way, pa
+    ```
+    op    a                  b                  why
+    pa    7                  4 2 0 1 3 5 6      max 7 on top → pa
+    rrb   7                  6 4 2 0 1 3 5      max 6 at bottom → rrb
+    pa    6 7                4 2 0 1 3 5
+    rrb   6 7                5 4 2 0 1 3        max 5 at bottom → rrb
+    pa    5 6 7              4 2 0 1 3
+    pa    4 5 6 7            2 0 1 3            max 4 on top → pa
+    rrb   4 5 6 7            3 2 0 1            max 3 at bottom → rrb
+    pa    3 4 5 6 7          2 0 1
+    pa    2 3 4 5 6 7        0 1                max 2 on top → pa
+    rb    2 3 4 5 6 7        1 0                max 1 at pos 1 → rb
+    pa    1 2 3 4 5 6 7      0
+    pa    0 1 2 3 4 5 6 7                       ✔ 28 ops
+    ```
+
+## Complex `40 20 10 30` (rank `3 1 0 2` = binary `11 01 00 10`)
+- n = 4 → biggest rank 3 = `11` → 2 bits → 2 passes
+- digit 1 → ra, digit 0 → pb, then pa all back
+    ```
+    op    a              b        why
+          40 20 10 30
+    pass bit 0 (last digit)
+    ra    20 10 30 40             40 = 1[1] → ra
+    ra    10 30 40 20             20 = 0[1] → ra
+    pb    30 40 20       10       10 = 0[0] → pb
+    pb    40 20          30 10    30 = 1[0] → pb
+    pa    30 40 20       10       pa all back
+    pa    10 30 40 20
+    pass bit 1 (first digit)
+    pb    30 40 20       10       10 = [0]0 → pb
+    ra    40 20 30       10       30 = [1]0 → ra
+    ra    20 30 40       10       40 = [1]1 → ra
+    pb    30 40          20 10    20 = [0]1 → pb
+    pa    20 30 40       10       pa all back
+    pa    10 20 30 40             ✔ 12 ops
+    ```
+
+## Adaptive `1 2 3 5 4 6`
+- n = 6 > 5 → no small sort, look at disorder
+- wrong pairs = only (5,4) → 1 / 15 = 0.067 < 0.2 → simple
+    ```
+    [bench] disorder: 6.67%
+    [bench] strategy: Adaptive / O(n^2)
+    ```
+- then it runs simple, almost no rotate bc each slot is already on top
+    ```
+    op    a              b
+          1 2 3 5 4 6
+    pb    2 3 5 4 6      1
+    pb    3 5 4 6        2 1
+    pb    5 4 6          3 2 1
+    pb    4 6            5 3 2 1
+    rb    4 6            3 2 1 5          4 → on top of 3 → rb
+    pb    6              4 3 2 1 5
+    rrb   6              5 4 3 2 1        6 → on top of 5 (bottom) → rrb
+    pb                   6 5 4 3 2 1
+    pa x6                1 2 3 4 5 6      ✔ 14 ops (only 2 rotations)
+    ```
 
 # How To Test
 - check if sorted correct (checker from the intra)
