@@ -3,6 +3,4 @@ def ft_plot_area():
     width = int(input('Enter width: '))
     area = length * width
 
-    print(f'Plot area: {length * width}')
-
-ft_plot_area()
+    print(f'Plot area: {area}')
