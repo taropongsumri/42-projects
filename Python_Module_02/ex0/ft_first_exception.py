@@ -1,10 +1,23 @@
-def input_temperature(temp_str):
-    try:
-        num = int(temp_str)
+def input_temperature(temp_str: str) -> int:
+    return int(temp_str)
+
+
+def test_temperature() -> None:
+    print("=== Garden Temperature ===\n")
+    for temp_str in ["25", "abc"]:
         print(f"Input data is '{temp_str}'")
-        print(f"Temperature is now {num}°C")
-        return num
-    except ValueError:
-        print(f"Input data is '{temp_str}'")
-        print(f"Caught input_temperature error: invalid literal for int() with base 10: '{temp_str}'")
-        return ("error")
+        try:
+            temp = input_temperature(temp_str)
+            print(f"Temperature is now {temp}°C")
+        except ValueError as e:
+            print(f"Caught input_temperature error: {e}")
+        print("")
+    print("All tests completed - program didn't crash!")
+
+
+def main() -> None:
+    test_temperature()
+
+
+if __name__ == "__main__":
+    main()
