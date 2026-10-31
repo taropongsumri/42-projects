@@ -1,4 +1,4 @@
-def main():
+def main() -> None:
     plant = "Rose"
     height = 25
     age = 30
@@ -8,5 +8,6 @@ def main():
     print(f"Age: {age} days")
     print("=== End of Program ===")
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()
