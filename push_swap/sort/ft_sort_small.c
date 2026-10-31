@@ -6,11 +6,11 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 10:21:15 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/10/29 08:43:52 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/10/31 12:44:11 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/push_swap.h"
+#include "push_swap.h"
 
 /*
 ** 3 elements: put the max at the bottom (ra or rra), then fix the top

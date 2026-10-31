@@ -2,15 +2,15 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_str_utils.c                                     :+:      :+:    :+:   */
-/*                                                      +:+ +:+         +:+   */
-/*   By: ponsumri <ponsumri@student.42bangkok.com>       +#+  +:+       +#+   */
-/*                                                        +#+#+#+#+#+   +#+   */
-/*   Created: 2026/10/15 10:21:15 by ponsumri                    #+#    #+#   */
-/*   Updated: 2026/10/15 10:21:15 by ponsumri             ###   ########.fr   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/15 10:21:15 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/10/31 12:44:11 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/push_swap.h"
+#include "push_swap.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {

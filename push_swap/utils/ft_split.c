@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ponsumri <ponsumri@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 11:45:33 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/09/16 11:45:33 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/10/31 12:44:11 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/push_swap.h"
+#include "push_swap.h"
 
 static int	word_count(char const *s, char c)
 {

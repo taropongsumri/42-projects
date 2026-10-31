@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ponsumri <ponsumri@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 19:26:33 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/09/17 19:26:33 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/10/31 12:44:11 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/push_swap.h"
+#include "push_swap.h"
 
 void	ft_error(char *c)
 {
