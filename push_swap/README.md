@@ -152,7 +152,7 @@ typedef struct s_ps_node
 - Why O(n²) ? every number can need up to n/2 rotations in b → n * n/2
 - Why still good when almost sorted ? the slot is next to the top → almost 0 rotations
 
-## Medium (Chunk Sort) O(n√n)
+## Medium (Butterfly / Chunk Sort) O(n√n)
 - n <= 3 → ft_sort_three
 
 - ft_sqrt ()

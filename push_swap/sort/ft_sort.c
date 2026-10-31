@@ -16,7 +16,7 @@
 ** Adaptive regimes (thresholds fixed by the subject):
 **   disorder <  0.2 : insertion sort, cost ~ inversions, cheap when
 **                     the input is nearly sorted         -> O(n^2)
-**   disorder <  0.5 : chunk sort                         -> O(n sqrt n)
+**   disorder <  0.5 : butterfly (chunk) sort             -> O(n sqrt n)
 **   disorder >= 0.5 : radix sort, cost independent of order -> O(n log n)
 */
 
